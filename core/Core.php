@@ -23,7 +23,8 @@ class Core
 	public function run()
 	{
 		spl_autoload_register([$this, 'loadClass']);
-		$this->setReposrting();
+		$this->allowedCors();
+		$this->setReporting();
 		$this->setDbConfig();
 		$this->route();
 
@@ -32,7 +33,7 @@ class Core
 	// Route
 	public function route()
 	{
-		$controllerName = $this->config['defaultController'];
+		$controllerName =ucfirst($this->config['defaultController']);
 		$actionName = $this->config['defaultAction'];
 		$param = [];
 
@@ -44,11 +45,15 @@ class Core
 
 		$url = trim($url, '/');
 
+		// TODO remove
+        $urlArray = explode('/', $url);
+        array_shift($urlArray); // remove projet repetoire
+        array_shift($urlArray); // remove projet repetoire
 
-		if ($url) {
+
+		if ($urlArray) {
 			
-			$urlArray = explode('/', $url);
-			array_shift($urlArray); // remove projet repetoire
+			//$urlArray = explode('/', $url);
 
 			$urlArray = array_filter($urlArray);
 
@@ -61,7 +66,7 @@ class Core
 			$param = $urlArray ? $urlArray : [];
 		}
 
-		$controller = 'App\\Controllers\\' . $controllerName . 'Controller';
+		$controller = 'app\\controllers\\' . $controllerName . 'Controller';
 
 		if (!class_exists($controller)) {
 			exit($controller . ' not found');
@@ -77,7 +82,7 @@ class Core
 	}
 
 	// Error reporting
-	public function setReposrting()
+	public function setReporting()
 	{
 		if (APP_DEBUG === true) {
 			error_reporting(E_ALL);
@@ -100,6 +105,13 @@ class Core
 		}
 	}
 
+    public function allowedCors()
+    {
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET');
+        header("Access-Control-Allow-Headers: X-Requested-With");
+    }
+
 	public function loadClass($className)
 	{
 		$classMap = $this->classMap();
@@ -108,7 +120,7 @@ class Core
 			
 			$file = $classMap[$className];
 		} elseif (strpos($className, '\\') !== false) {
-			$file = APP_PATH .str_replace('\\', '/', $className) . '.php';
+			$file = APP_PATH . '/../' . str_replace('\\', '/', $className) . '.php';
 
 			if (!is_file($file)) {
 				return;
@@ -116,6 +128,8 @@ class Core
 		} else {
 			return;
 		}
+
+		var_dump($file);
 
 		include $file;
 

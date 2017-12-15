@@ -3,13 +3,16 @@
 
 namespace App\Controllers;
 
-class ArticleController
+use App\Model\ArticleModel;
+use Core\Base\Controller;
+
+class ArticleController extends Controller
 {
 
-	public function index($id = null)
+	public function index()
 	{
-		echo "<h1>Article</h1>";
-		echo "<p>$id</p>";
+		$articles = (new ArticleModel())->all();
+		var_dump($articles);
 	}
 
 }

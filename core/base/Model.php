@@ -2,7 +2,6 @@
 
 namespace Core\Base;
 
-
 use Core\DB\Sql;
 
 class Model extends Sql

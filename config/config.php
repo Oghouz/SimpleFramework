@@ -9,6 +9,6 @@ return [
 		'dbname' => 'dbname'
 	],
 
-	'defaultController' => 'Item',
+	'defaultController' => 'article',
 	'defaultAction' => 'index'
 ];

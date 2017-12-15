@@ -25,7 +25,7 @@ class Sql
 		return $this;
 	}
 
-	public function order ($order = [])
+	public function order($order = [])
 	{
 		if ($order) {
 			$this->filter .= ' ORDER BY ';

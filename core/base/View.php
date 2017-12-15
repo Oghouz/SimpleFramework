@@ -19,7 +19,7 @@ class View
 		$this->variables[$name] = $value;
 	}
 
-	public function redner()
+	public function render()
 	{
 		extract($this->variables);
 		$defaultHeader = APP_PATH . 'app/views/header.php';

@@ -2,7 +2,7 @@
 
 namespace Core\Base;
 
-class Contorller
+class Controller
 {
 
 	protected $_controller;
@@ -18,7 +18,7 @@ class Contorller
 
 	public function assgin($name, $value)
 	{
-		$this>_view->assign($name, $value);
+		$this->_view->assign($name, $value);
 	}
 
 	public function render()
