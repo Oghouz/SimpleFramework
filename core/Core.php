@@ -117,11 +117,12 @@ class Core
 		$classMap = $this->classMap();
 
 		if (isset($classMap[$className])) {
-			
+
 			$file = $classMap[$className];
 		} elseif (strpos($className, '\\') !== false) {
-			$file = APP_PATH . '/../' . str_replace('\\', '/', $className) . '.php';
+			$file = APP_PATH  . str_replace('\\', '/', $className) . '.php';
 
+            var_dump($file);
 			if (!is_file($file)) {
 				return;
 			}
@@ -129,7 +130,6 @@ class Core
 			return;
 		}
 
-		var_dump($file);
 
 		include $file;
 

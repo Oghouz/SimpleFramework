@@ -1,0 +1,38 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'bugs' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 silly fetchPackageMetaData .
+5 silly fetchOtherPackageData .
+6 silly cache add args [ '.', null ]
+7 verbose cache add spec .
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: '.',
+8 silly cache add   scope: null,
+8 silly cache add   escapedName: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: '.',
+8 silly cache add   spec: 'C:\\wamp\\www\\mvc\\public',
+8 silly cache add   type: 'local' }
+9 error addLocal Could not install C:\wamp\www\mvc\public
+10 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+10 silly fetchPackageMetaData     at Error (native)
+10 silly fetchPackageMetaData  error for . { Error: EISDIR: illegal operation on a directory, read
+10 silly fetchPackageMetaData     at Error (native) errno: -4068, code: 'EISDIR', syscall: 'read' }
+11 verbose stack Error: EISDIR: illegal operation on a directory, read
+11 verbose stack     at Error (native)
+12 verbose cwd C:\wamp\www\mvc\public
+13 error Windows_NT 10.0.16299
+14 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "bugs"
+15 error node v6.9.4
+16 error npm  v3.10.10
+17 error code EISDIR
+18 error errno -4068
+19 error syscall read
+20 error eisdir EISDIR: illegal operation on a directory, read
+21 error eisdir This is most likely not a problem with npm itself
+21 error eisdir and is related to npm not being able to find a package.json in
+21 error eisdir a package you are trying to install.
+22 verbose exit [ -4068, true ]
